@@ -8,6 +8,9 @@ function Gallery() {
   const [category, setCategory] = useState("");
   const [photos, setPhotos] = useState([]);
   const [noPhotosMessage, setNoPhotosMessage] = useState("");
+  const [extractedWord, setExtractedWord] = useState([]);
+
+
 
   const handleSearch = async () => {
     try {
@@ -66,7 +69,18 @@ function Gallery() {
         <button onClick={handleSearch} className="search-btn">
           Search
         </button>
+        {
+          extractedWord.length > 0 && (
+            <div>
+              <p>{extractedWord}</p>
+            </div>
+          )
+        }
+        
       </div>
+
+
+
       <div className="gallery">
         {noPhotosMessage ? (
           <p className="gallery-no-photos">{noPhotosMessage}</p>
