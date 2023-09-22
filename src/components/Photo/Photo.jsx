@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 
-function Photo({ photo }) {
+function Photo({ photo, onWordExtracted }) {
   const [startingPoint, setStartingPoint] = useState("");
   const [endPoint, setEndPoint] = useState("");
   const [extractedWord, setExtractedWord] = useState([]);
 
-
-
- const extractWord=()=>{
-  if(startingPoint !=="" && endPoint !==""){
-const description = photo.description;
-const words=description.split(" ").slice(startingPoint -1,endPoint).join(" ")
-setExtractedWord([words])
-console.log(words);
-  }
- }
+  const extractWord = () => {
+    if (photo.description && startingPoint !== "" && endPoint !== "") {
+      const words = photo.description
+        .split(" ")
+        .slice(startingPoint - 1, endPoint)
+        .join(" ");
+      setExtractedWord([words]);
+      console.log(words);
+      onWordExtracted(words);
+    }
+  };
 
   return (
     <div className="photo">
@@ -36,7 +37,6 @@ console.log(words);
         />
         <button onClick={extractWord}> words</button>
       </div>
-    
     </div>
   );
 }

@@ -10,7 +10,9 @@ function Gallery() {
   const [noPhotosMessage, setNoPhotosMessage] = useState("");
   const [extractedWord, setExtractedWord] = useState([]);
 
-
+  const handleExtractedSearch = (word) => {
+    setExtractedWord(word);
+  };
 
   const handleSearch = async () => {
     try {
@@ -42,6 +44,10 @@ function Gallery() {
     }
   };
 
+  const updateSearchField = (word) => {
+    setCategory(`${word}`);
+  };
+
   return (
     <div>
       <h1>Picture Gallery</h1>
@@ -52,6 +58,7 @@ function Gallery() {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           className="input-search-field"
+          handleExtractedSearch={updateSearchField}
         />
         <div>
           <select
@@ -69,23 +76,19 @@ function Gallery() {
         <button onClick={handleSearch} className="search-btn">
           Search
         </button>
-        {
-          extractedWord.length > 0 && (
-            <div>
-              <p>{extractedWord}</p>
-            </div>
-          )
-        }
-        
       </div>
-
-
 
       <div className="gallery">
         {noPhotosMessage ? (
           <p className="gallery-no-photos">{noPhotosMessage}</p>
         ) : (
-          photos.map((photo) => <Photo key={photo.id} photo={photo} />)
+          photos.map((photo) => (
+            <Photo
+              key={photo.id}
+              photo={photo}
+              onWordExtracted={updateSearchField}
+            />
+          ))
         )}
       </div>
     </div>
