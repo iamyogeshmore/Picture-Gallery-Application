@@ -5,7 +5,9 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
+
+  font-size: 18px;
   background-color: #ffffff;
   margin-top: 20px;
 }
@@ -15,6 +17,12 @@ h1 {
   margin: 20px 0;
   color: black;
   text-align: center;
+}
+
+.search-container {
+  display: flex;
+  padding: 5px;
+  margin-left: 35%;
 }
 
 .input-search-field {
@@ -39,6 +47,19 @@ h1 {
 .search-btn:hover {
   background-color: #2600ff;
   color: #00ff22;
+}
+
+.dropdown {
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid rgba(255, 0, 0, 0.32);
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.dropdown- option {
+  padding: 10px;
+  font-size: 15px;
 }
 
 .gallery {

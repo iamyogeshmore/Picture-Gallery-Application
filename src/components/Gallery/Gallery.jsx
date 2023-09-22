@@ -42,7 +42,7 @@ function Gallery() {
   return (
     <div>
       <h1>Picture Gallery</h1>
-      <div>
+      <div className="search-container">
         <input
           type="text"
           placeholder="Enter a category name..."
@@ -50,6 +50,19 @@ function Gallery() {
           onChange={(e) => setCategory(e.target.value)}
           className="input-search-field"
         />
+        <div>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="dropdown"
+          >
+            <option value="">Select city</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="chennai">chennai</option>
+            <option value="lucknow">lucknow</option>
+          </select>
+        </div>
         <button onClick={handleSearch} className="search-btn">
           Search
         </button>
